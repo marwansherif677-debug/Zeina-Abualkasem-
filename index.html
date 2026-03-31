@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Zeina Sherif | L&D Portfolio — Swan Grace</title>
-    <!-- Fonts: Century Gothic (fallback to sans-serif), Cinzel for headings -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Zeina Sherif | L&D Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Global font settings */
         * {
             margin: 0;
             padding: 0;
@@ -17,689 +15,631 @@
 
         body {
             font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', 'Trebuchet MS', 'Futura', 'Arial', sans-serif;
-            background: #FEFCF5;   /* warm off-white, like swan feathers */
-            color: #2C3E3B;        /* soft sage-gray, easy on eyes */
+            background: #F5FAFE;
+            color: #2C4F6E;
             line-height: 1.6;
             overflow-x: hidden;
-            font-weight: 400;
-            font-size: 1rem;
         }
 
-        /* All headings and titles use Cinzel (elegant serif) */
-        h1, h2, h3, h4, .cinzel, .project-title, .case-title, .logo, nav a, .stats-grid h2 {
+        /* Typography */
+        h1, h2, h3, h4, .logo, .nav-links a, .project-title, .case-title, .stat-title {
             font-family: 'Cinzel', 'Georgia', 'Times New Roman', serif;
             font-weight: 600;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.2px;
         }
 
-        /* preserve mono style for accent elements but with refined touch */
         .mono {
-            font-family: 'Century Gothic', 'CenturyGothic', monospace;
-            font-size: 0.72rem;
+            font-family: 'Century Gothic', monospace;
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.8px;
             font-weight: 500;
         }
 
-        /* ---------- SWAN CURSOR (elegant, flowing) ---------- */
-        #swan-cursor {
+        /* Professional cursor — minimal side-view swan head (subtle, not decorative) */
+        #professional-cursor {
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            width: 28px;
-            height: 28px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            width: 20px;
+            height: 20px;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
             transition: transform 0.1s ease;
         }
-        .swan-body {
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            background: #E8E0D0;
-            border-radius: 60% 40% 50% 50%;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        .cursor-swan {
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
-        .swan-neck {
+        .cursor-head {
             position: absolute;
-            width: 28px;
+            width: 14px;
             height: 12px;
             background: #E8E0D0;
-            border-radius: 40% 60% 30% 70%;
-            transform: rotate(-35deg);
-            left: 14px;
-            top: -6px;
-            box-shadow: -2px -1px 4px rgba(0,0,0,0.05);
+            border-radius: 50% 45% 55% 50%;
+            top: 4px;
+            left: 2px;
         }
-        .swan-head {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #D9CFBC;
-            border-radius: 50%;
-            left: 24px;
-            top: -12px;
-        }
-        .swan-beak {
+        .cursor-beak {
             position: absolute;
             width: 6px;
-            height: 4px;
-            background: #E6A17A;
-            border-radius: 30% 70% 50% 50%;
-            left: 28px;
-            top: -11px;
+            height: 3px;
+            background: #CBAF91;
+            border-radius: 40% 60% 50% 40%;
+            top: 9px;
+            left: 13px;
             transform: rotate(15deg);
         }
-        #cursor-ring-swan {
-            width: 42px;
-            height: 42px;
-            border: 1.5px solid #C7B99B;
+        .cursor-eye {
+            position: absolute;
+            width: 1.5px;
+            height: 1.5px;
+            background: #2C4F6E;
+            border-radius: 50%;
+            top: 7px;
+            left: 6px;
+        }
+        #cursor-ring-pro {
+            width: 36px;
+            height: 36px;
+            border: 1px solid #9BBFD4;
             position: fixed;
-            border-radius: 65% 35% 70% 30%;
+            border-radius: 50%;
             pointer-events: none;
-            transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: all 0.2s ease;
             z-index: 9998;
-            background: rgba(210, 195, 165, 0.08);
-            backdrop-filter: blur(1px);
-            transform: rotate(5deg);
+            background: rgba(155, 191, 212, 0.04);
         }
 
-        /* ---------- NAVIGATION (airy & translucent) ---------- */
+        /* Navigation — clean, minimal */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.2rem 7%;
+            padding: 1rem 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(254, 252, 245, 0.88);
+            background: rgba(245, 250, 254, 0.92);
             backdrop-filter: blur(12px);
             z-index: 1000;
-            border-bottom: 1px solid #E8E0D4;
-            transition: all 0.2s ease;
+            border-bottom: 1px solid #E2EDF5;
         }
-        nav .logo {
-            color: #6F7E74;
-            font-weight: 600;
-            font-size: 1.25rem;
-            letter-spacing: -0.2px;
+        .logo {
+            font-size: 1.2rem;
+            color: #4A7B96;
+            letter-spacing: -0.3px;
         }
-        nav a {
+        .nav-links a {
             text-decoration: none;
-            color: #6F7E74;
+            color: #4A7B96;
             font-weight: 500;
             margin-left: 2rem;
-            transition: color 0.2s ease;
-            cursor: pointer !important;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+            font-family: 'Cinzel', serif;
         }
-        nav a:hover {
-            color: #C7A47B;
+        .nav-links a:hover {
+            color: #2C5F7F;
         }
         .cv-btn {
-            border: 1px solid #D6CDB8;
-            padding: 6px 20px;
-            border-radius: 40px;
-            background: rgba(199, 164, 123, 0.08);
+            border: 1px solid #C2DAE8;
+            padding: 6px 18px;
+            border-radius: 30px;
+            background: transparent;
             transition: all 0.2s;
         }
         .cv-btn:hover {
-            background: #C7A47B;
+            background: #4A7B96;
             color: white !important;
-            border-color: #C7A47B;
+            border-color: #4A7B96;
         }
 
-        /* ---------- SECTIONS & SPACING (softer, swan-like flow) ---------- */
-        section {
-            padding: 7rem 7%;
-        }
+        /* Hero Section */
         .hero {
             display: flex;
             min-height: 100vh;
-            align-items: stretch;
-            gap: 0;
             padding: 0;
         }
         .hero-left {
             flex: 1.2;
-            background: #F9F5EA;
-            color: #4D625C;
+            background: linear-gradient(120deg, #EFF5FA 0%, #E9F2F8 100%);
             padding: 12% 8%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            position: relative;
         }
         .hero-right {
             flex: 0.8;
-            background: #FEFAF2;
+            background: #F9FCFE;
             padding: 12% 8%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-left: 1px solid #ECE3D5;
+            border-left: 1px solid #E5EEF5;
         }
         .hero-left h1 {
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             line-height: 1.2;
-            margin-top: 0.5rem;
-            color: #5B6E66;
-            font-weight: 700;
-            font-family: 'Cinzel', serif;
+            color: #3C6E8C;
+            margin-top: 1rem;
         }
         .hero-right h2 {
-            font-size: 1.9rem;
+            font-size: 1.7rem;
             font-weight: 500;
-            line-height: 1.35;
-            color: #7C8F86;
-            font-family: 'Cinzel', serif;
+            color: #5F8CAA;
+            line-height: 1.4;
+        }
+        .badge {
+            background: #E9F0F5;
+            display: inline-block;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
         }
 
-        /* subtle feather accent */
-        .swan-accent {
-            position: absolute;
-            bottom: 2rem;
-            right: 2rem;
-            opacity: 0.3;
-            font-size: 2.5rem;
-        }
-
-        /* stats row — graceful & minimal */
-        .stats-grid {
+        /* Stats */
+        .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            background: #F6F0E4;
-            color: #5F766D;
-            padding: 2.8rem 7%;
+            background: #FFFFFF;
+            padding: 2rem 8%;
             text-align: center;
-            border-top: 1px solid #EAE0D2;
-            border-bottom: 1px solid #EAE0D2;
+            border-top: 1px solid #E9F0F5;
+            border-bottom: 1px solid #E9F0F5;
         }
-        .stats-grid h2 {
-            font-size: 2.3rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            color: #7D968B;
-            font-family: 'Cinzel', serif;
+        .stat-item h3 {
+            font-size: 2rem;
+            color: #4A7B96;
+            margin-bottom: 0.2rem;
         }
-        .stats-grid p {
+        .stat-item p {
             font-size: 0.7rem;
             letter-spacing: 1px;
-            font-family: 'Century Gothic', sans-serif;
+            color: #7A9BB3;
         }
 
-        /* Skills section */
-        .skills-container {
+        /* Skills */
+        .skills-section {
+            padding: 5rem 8%;
+        }
+        .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
             margin-top: 2rem;
         }
-        .skill-title {
-            font-weight: 600;
-            margin: 1rem 0 0.3rem 0;
-            color: #5F766D;
-            font-family: 'Century Gothic', sans-serif;
+        .skill-group h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: #3C6E8C;
         }
-        .skill-bar {
-            height: 5px;
-            background: #E8E0D4;
-            margin: 8px 0 1rem 0;
-            border-radius: 12px;
+        .skill-item {
+            margin-bottom: 1.2rem;
+        }
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #4A6F88;
+        }
+        .progress-bar {
+            height: 4px;
+            background: #E2EDF5;
+            border-radius: 4px;
             overflow: hidden;
         }
-        .skill-progress {
+        .progress-fill {
             height: 100%;
-            background: #C7B99B;
-            border-radius: 12px;
-            width: 0%;
-            transition: width 1s cubic-bezier(0.2, 0.8, 0.4, 1);
+            background: #8BB9D4;
+            width: 0;
+            transition: width 0.9s ease;
+            border-radius: 4px;
+        }
+        .lang-row {
+            margin-bottom: 1rem;
         }
         .lang-dots {
             display: flex;
-            gap: 8px;
-            margin: 10px 0 20px;
+            gap: 6px;
+            margin-top: 5px;
         }
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
-            background: #DFD4C4;
+            background: #D0E2EE;
         }
-        .dot.fill {
-            background: #C7B99B;
+        .dot.filled {
+            background: #8BB9D4;
+        }
+        hr {
+            margin: 1.5rem 0;
+            border-color: #E9F0F5;
         }
 
-        /* Project Cards — swan elegance */
+        /* Projects Grid */
+        .projects-section {
+            padding: 5rem 8%;
+            background: #F9FCFE;
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #3C6E8C;
+        }
+        .section-sub {
+            color: #7A9BB3;
+            margin-bottom: 2rem;
+        }
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
-            margin-top: 2.5rem;
         }
         .project-card {
-            background: #FFFFFFE6;
-            border-radius: 32px;
-            padding: 1.5rem;
-            border: 1px solid #EFE6DB;
-            transition: all 0.35s ease;
-            backdrop-filter: blur(2px);
-            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem;
+            border: 1px solid #E9F0F5;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
         .project-card:hover {
-            transform: translateY(-6px);
-            border-color: #D6CAB8;
-            box-shadow: 0 18px 28px -12px rgba(90, 80, 60, 0.12);
+            transform: translateY(-4px);
+            border-color: #C2DAE8;
+            box-shadow: 0 12px 24px -12px rgba(60, 110, 140, 0.12);
         }
         .project-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
         }
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .project-card h3 {
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: #6A8478;
-            font-family: 'Cinzel', serif;
+            color: #4A7B96;
         }
         .project-link {
             display: inline-block;
-            margin-top: 1rem;
-            color: #C7A47B;
+            margin-top: 1.2rem;
+            color: #5F8CAA;
             text-decoration: none;
             font-weight: 500;
-            border-bottom: 1px solid #E1D3C2;
-            transition: 0.2s;
-            font-family: 'Century Gothic', sans-serif;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #C2DAE8;
         }
         .project-link:hover {
-            color: #9B7B5C;
-            border-bottom-color: #C7A47B;
-        }
-        hr {
-            margin: 2rem 0 1rem;
-            border-color: #EFE6DB;
+            color: #3C6E8C;
         }
 
-        /* Case studies accordion */
-        .case-wrapper {
-            margin-top: 2rem;
+        /* Case Studies Accordion */
+        .cases-section {
+            padding: 5rem 8%;
+        }
+        .case-item {
+            margin-bottom: 1rem;
         }
         .case-header {
-            cursor: pointer;
-            padding: 1.4rem 1.8rem;
-            background: #FFFFFFF0;
-            border: 1px solid #EFE6DB;
-            border-radius: 28px;
-            display: grid;
-            grid-template-columns: 1fr 1fr 0.2fr;
+            background: white;
+            border: 1px solid #E9F0F5;
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
+            cursor: pointer;
             transition: all 0.2s;
-            margin-bottom: 0.5rem;
         }
         .case-header:hover {
-            background: #FEFBF5;
-            border-color: #DDD0BE;
+            background: #FDFFFE;
+            border-color: #C2DAE8;
         }
         .case-title {
-            font-weight: 700;
-            font-size: 1.25rem;
-            font-family: 'Cinzel', serif;
-            color: #6A8478;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #3C6E8C;
         }
         .case-meta {
-            font-family: 'Century Gothic', monospace;
             font-size: 0.7rem;
-            color: #B3A68F;
-            letter-spacing: 0.3px;
+            color: #8AADc2;
+            font-family: monospace;
         }
         .case-expand {
-            font-size: 1.6rem;
-            font-weight: 300;
-            justify-self: end;
-            color: #C7B99B;
+            font-size: 1.3rem;
+            color: #8BB9D4;
         }
         .case-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.55s ease-in-out, padding 0.3s;
-            background: #FFFFFFCC;
-            border-radius: 0 0 24px 24px;
-            margin-bottom: 1rem;
+            transition: max-height 0.4s ease;
+            background: #FFFFFF;
+            border: 1px solid transparent;
+            border-radius: 0 0 16px 16px;
+            margin-top: -4px;
         }
         .case-content.open {
-            max-height: 700px;
-            padding: 1.2rem 1.8rem 1.8rem 1.8rem;
-            background: #FFFFFFF5;
-            border: 1px solid #EFE6DB;
+            max-height: 500px;
+            padding: 1.2rem 1.5rem 1.5rem;
+            border-color: #E9F0F5;
             border-top: none;
-            border-radius: 0 0 24px 24px;
         }
-        .insight-list {
+        .case-content ul {
             padding-left: 1.2rem;
             margin-top: 0.8rem;
-            font-family: 'Century Gothic', sans-serif;
         }
-        .insight-list li {
+        .case-content li {
             margin-bottom: 0.5rem;
         }
 
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 8%;
+            border-top: 1px solid #E9F0F5;
+            font-size: 0.7rem;
+            color: #8AADc2;
+        }
+
+        /* Animations */
         .fade-up {
             opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.7s ease, transform 0.65s ease;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .footer-note {
-            text-align: center;
-            padding: 2.5rem 6% 2rem;
-            font-size: 0.7rem;
-            color: #B8A88E;
-            border-top: 1px solid #EFE6DB;
-            letter-spacing: 0.5px;
-            font-family: 'Century Gothic', sans-serif;
+        @media (max-width: 800px) {
+            .hero { flex-direction: column; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .case-header { flex-wrap: wrap; gap: 0.5rem; }
+            nav { padding: 0.8rem 5%; }
+            .nav-links a { margin-left: 1rem; }
         }
 
-        @media (max-width: 780px) {
-            .hero { flex-direction: column; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1.8rem; }
-            .skills-container { grid-template-columns: 1fr; }
-            .case-header { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-        }
         ::selection {
-            background: #E9DFD0;
-            color: #5B6E66;
-        }
-        /* Additional refinements for Century Gothic readability */
-        p, li, .skill-bar, .lang-dots, .stats-grid p, .mono, .case-content, .project-link, .footer-note {
-            font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', 'Trebuchet MS', sans-serif;
-        }
-        .hero-left p.mono, .hero-right .mono {
-            font-family: 'Century Gothic', monospace;
-            font-weight: 500;
+            background: #D9E8F2;
+            color: #2C4F6E;
         }
     </style>
 </head>
 <body>
 
-    <!-- swan cursor -->
-    <div id="swan-cursor">
-        <div class="swan-body"></div>
-        <div class="swan-neck"></div>
-        <div class="swan-head"></div>
-        <div class="swan-beak"></div>
+    <!-- Minimal professional cursor (side-view swan head, subtle) -->
+    <div id="professional-cursor">
+        <div class="cursor-swan">
+            <div class="cursor-head"></div>
+            <div class="cursor-beak"></div>
+            <div class="cursor-eye"></div>
+        </div>
     </div>
-    <div id="cursor-ring-swan"></div>
+    <div id="cursor-ring-pro"></div>
 
+    <!-- Navigation -->
     <nav>
-        <div class="logo mono">🦢 Zeina Sherif</div>
-        <div>
+        <div class="logo mono">Zeina Sherif</div>
+        <div class="nav-links">
             <a href="#work">Work</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
-            <a href="Zeina_Sherif_L&D_CV 2.pdf" class="cv-btn mono">Download CV</a>
+            <a href="Zeina_Sherif_L&D_CV 2.pdf" class="cv-btn mono">CV</a>
         </div>
     </nav>
 
-    <!-- Hero section : graceful swan energy -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-left">
-            <p class="mono" style="color:#B8A88E;">✦ L&D Architect · Swan Strategy</p>
-            <h1>I shorten learning curves.<br>Performance follows with grace.</h1>
-            <div class="swan-accent">🦢</div>
+            <p class="mono" style="color:#7A9BB3;">L&D Strategist</p>
+            <h1>Shortening learning curves.<br>Performance follows.</h1>
         </div>
         <div class="hero-right">
-            <h2>Building human-first L&D ecosystems from the ground up — calm, intentional design meets measurable impact.</h2>
-            <div style="margin-top: 2rem;">
-                <p class="mono" style="background: #F5EFE4; display: inline-block; padding: 0.4rem 1.2rem; border-radius: 40px;">✦ ADDIE · Swan Flow · Scalable Impact</p>
+            <h2>Building L&D functions from the ground up — strategic, evidence-based, and human-centered.</h2>
+            <div style="margin-top: 1.8rem;">
+                <p class="mono badge">ADDIE · Instructional Design · Scalable Impact</p>
             </div>
         </div>
     </section>
 
-    <!-- stats row: no GPA, replaced with graceful metrics -->
-    <div class="stats-grid">
-        <div><h2>2025</h2><p class="mono">Dept. Founder</p></div>
-        <div><h2>ADDIE</h2><p class="mono">End-to-End Framework</p></div>
-        <div><h2>3+</h2><p class="mono">Years Experience</p></div>
+    <!-- Stats (professional metrics, no GPA) -->
+    <div class="stats">
+        <div class="stat-item"><h3>2025</h3><p class="mono">Dept. Founder</p></div>
+        <div class="stat-item"><h3>ADDIE</h3><p class="mono">Framework Mastery</p></div>
+        <div class="stat-item"><h3>3+</h3><p class="mono">Years Experience</p></div>
     </div>
 
-    <!-- Skills section (soft, refined) -->
-    <section id="skills" class="fade-up">
-        <p class="mono" style="color:#B8A88E;">╱ core competencies</p>
-        <div class="skills-container">
-            <div>
-                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; font-family: 'Cinzel', serif;">Methodology</h3>
-                <div class="skill-title">ADDIE Model Mastery</div>
-                <div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
-                <div class="skill-title">Instructional Design & Curriculum</div>
-                <div class="skill-bar"><div class="skill-progress" data-width="92"></div></div>
-                <div class="skill-title">Needs Analysis & Evaluation</div>
-                <div class="skill-bar"><div class="skill-progress" data-width="88"></div></div>
-                <div class="skill-title">Learning Experience Platforms (LXP)</div>
-                <div class="skill-bar"><div class="skill-progress" data-width="84"></div></div>
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section fade-up">
+        <p class="mono" style="color:#7A9BB3;">Core Competencies</p>
+        <div class="skills-grid">
+            <div class="skill-group">
+                <h3>Methodology</h3>
+                <div class="skill-item"><div class="skill-name">ADDIE Model</div><div class="progress-bar"><div class="progress-fill" data-width="95"></div></div></div>
+                <div class="skill-item"><div class="skill-name">Instructional Design</div><div class="progress-bar"><div class="progress-fill" data-width="92"></div></div></div>
+                <div class="skill-item"><div class="skill-name">Needs Analysis</div><div class="progress-bar"><div class="progress-fill" data-width="88"></div></div></div>
+                <div class="skill-item"><div class="skill-name">Learning Platforms (LXP/LMS)</div><div class="progress-bar"><div class="progress-fill" data-width="85"></div></div></div>
             </div>
-            <div>
-                <h3 style="font-size: 2rem; margin-bottom: 0.5rem; font-family: 'Cinzel', serif;">Languages & fluency</h3>
-                <p class="skill-title">English — Professional working</p>
-                <div class="lang-dots">
-                    <div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot"></div>
-                </div>
-                <p class="skill-title">Arabic — Native / C2</p>
-                <div class="lang-dots">
-                    <div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div><div class="dot fill"></div>
-                </div>
-                <p class="skill-title">French — Basic (A2) · conversational</p>
-                <div class="lang-dots">
-                    <div class="dot fill"></div><div class="dot fill"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
-                </div>
+            <div class="skill-group">
+                <h3>Languages</h3>
+                <div class="lang-row"><div class="skill-name">English — Professional</div><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+                <div class="lang-row"><div class="skill-name">Arabic — Native</div><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+                <div class="lang-row"><div class="skill-name">French — Intermediate</div><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
                 <hr>
-                <p class="mono" style="margin-top: 1rem;">⚡ design tools: Articulate, Canva, Miro, Notion, Moodle</p>
+                <p class="mono" style="margin-top: 0.5rem;">Tools: Articulate · Canva · Miro · Notion · Genially · Animaker</p>
             </div>
         </div>
     </section>
 
-    <!-- Featured Projects Section (Animaker + Genially) -->
-    <section id="projects" class="fade-up">
-        <p class="mono" style="color:#B8A88E;">╱ interactive creations</p>
-        <h2 style="font-size: 2.4rem; margin: 0.5rem 0 0.2rem; font-family: 'Cinzel', serif;">Swan-crafted learning experiences</h2>
+    <!-- Projects Section: Animaker + Genially -->
+    <section id="projects" class="projects-section fade-up">
+        <p class="mono" style="color:#7A9BB3;">Featured Work</p>
+        <h2 class="section-title">Interactive Learning Projects</h2>
+        <p class="section-sub">Multimedia and gamified solutions designed for engagement and retention.</p>
         <div class="projects-grid">
-            <!-- Animaker Video Project -->
             <div class="project-card">
-                <div class="project-icon">🎬🦢</div>
-                <div class="project-title">Animaker · L&D Motion Video</div>
-                <p style="margin: 0.5rem 0;">Animated learning narrative designed to simplify complex L&D frameworks. Engaging visual storytelling that boosts retention.</p>
-                <a href="https://app.animaker.com/video/EDUNP496D486V0SS" target="_blank" class="project-link">Watch the video →</a>
+                <div class="project-icon">🎬</div>
+                <h3>Animaker · L&D Motion Video</h3>
+                <p>Animated explainer video that visualizes instructional design frameworks. Used for onboarding and learning culture initiatives.</p>
+                <a href="https://app.animaker.com/video/EDUNP496D486V0SS" target="_blank" class="project-link">View project →</a>
             </div>
-            <!-- Genially Puzzle Game -->
             <div class="project-card">
-                <div class="project-icon">🧩🦢</div>
-                <div class="project-title">Genially · Puzzle Game</div>
-                <p style="margin: 0.5rem 0;">Interactive puzzle game that reinforces instructional design principles through play. Gamified learning at its finest.</p>
-                <a href="https://view.genially.com/69ad72640f5a46e418246c16/interactive-content-puzzle-game" target="_blank" class="project-link">Play the game →</a>
+                <div class="project-icon">🧩</div>
+                <h3>Genially · Puzzle Game</h3>
+                <p>Interactive puzzle game that reinforces key L&D concepts through gamified learning. Designed for knowledge retention and engagement.</p>
+                <a href="https://view.genially.com/69ad72640f5a46e418246c16/interactive-content-puzzle-game" target="_blank" class="project-link">Play game →</a>
             </div>
         </div>
     </section>
 
-    <!-- Work / Case Studies (Accordion style, fully interactive) -->
-    <section id="work" class="fade-up">
-        <p class="mono" style="color:#B8A88E;">╱ featured impact</p>
-        <h2 style="font-size: 2.5rem; margin: 0.5rem 0 0.5rem; font-family: 'Cinzel', serif;">Learning transformations</h2>
+    <!-- Case Studies (no FinTech references) -->
+    <section id="work" class="cases-section fade-up">
+        <p class="mono" style="color:#7A9BB3;">Case Studies</p>
+        <h2 class="section-title">Learning Transformations</h2>
         <div class="case-wrapper">
-            <!-- case 1 -->
             <div class="case-item">
                 <div class="case-header">
-                    <div class="case-title">📘 L&D Department · from 0 to 1</div>
-                    <div class="case-meta">FinTech scale-up | 2025</div>
-                    <div class="case-expand">+</div>
+                    <span class="case-title">L&D Department · from 0 to 1</span>
+                    <span class="case-meta">Corporate | 2025</span>
+                    <span class="case-expand">+</span>
                 </div>
                 <div class="case-content">
-                    <p><strong>Challenge:</strong> No structured learning function, high ramp-up time for product teams, 40% of new hires felt underprepared.</p>
-                    <ul class="insight-list">
-                        <li>🔹 Designed & launched end-to-end L&D framework based on ADDIE + agile sprints.</li>
-                        <li>🔹 Built competency maps for 5 key roles, created 12 micro-learning modules within 8 weeks.</li>
-                        <li>🔹 Result: time-to-competency reduced by 34%, employee learning satisfaction scored 92%.</li>
+                    <p><strong>Challenge:</strong> Organization lacked a centralized learning function; new hires faced long ramp-up times.</p>
+                    <ul>
+                        <li>Designed and launched full L&D framework using ADDIE methodology.</li>
+                        <li>Developed 12 micro-learning modules across 5 core roles within 8 weeks.</li>
+                        <li><strong>Result:</strong> 34% reduction in time-to-competency, 92% learner satisfaction.</li>
                     </ul>
-                    <p class="mono" style="margin-top: 0.7rem;">📌 Tools: Articulate Rise, Miro, internal LMS integration</p>
+                    <p class="mono" style="margin-top: 0.8rem;">Tools: Articulate Rise · Miro · LMS Integration</p>
                 </div>
             </div>
-            <!-- case 2 -->
             <div class="case-item">
                 <div class="case-header">
-                    <div class="case-title">📊 Performance Consulting · Retail Leadership</div>
-                    <div class="case-meta">Regional retail chain | 2024</div>
-                    <div class="case-expand">+</div>
+                    <span class="case-title">Performance Consulting · Retail Leadership</span>
+                    <span class="case-meta">Retail Chain | 2024</span>
+                    <span class="case-expand">+</span>
                 </div>
                 <div class="case-content">
-                    <p><strong>Context:</strong> 22 store managers lacked coaching skills, leading to 18% attrition in frontline teams.</p>
-                    <ul class="insight-list">
-                        <li>🔹 Conducted needs analysis via focus groups & observational walkthroughs.</li>
-                        <li>🔹 Designed blended learning journey: virtual workshops + on-the-job coaching toolkit.</li>
-                        <li>🔹 Achieved 27% decrease in frontline turnover within 4 months, 89% manager adoption rate.</li>
+                    <p><strong>Context:</strong> Store managers lacked coaching skills, contributing to high frontline turnover.</p>
+                    <ul>
+                        <li>Conducted needs analysis via focus groups and observational research.</li>
+                        <li>Designed blended program: virtual workshops + on-the-job coaching toolkit.</li>
+                        <li><strong>Result:</strong> 27% decrease in frontline turnover, 89% manager adoption.</li>
                     </ul>
-                    <p class="mono">⭐ Recognition: Internal “Innovation in Learning” award</p>
+                    <p class="mono">🏆 Internal Innovation in Learning Award</p>
                 </div>
             </div>
-            <!-- case 3 -->
             <div class="case-item">
                 <div class="case-header">
-                    <div class="case-title">🎓 Academic Excellence Program</div>
-                    <div class="case-meta">Higher Education Initiative | 2023</div>
-                    <div class="case-expand">+</div>
+                    <span class="case-title">Academic Excellence Program</span>
+                    <span class="case-meta">Higher Education | 2023</span>
+                    <span class="case-expand">+</span>
                 </div>
                 <div class="case-content">
-                    <p><strong>Goal:</strong> Bridge gap between academic theory and corporate readiness for 150+ students.</p>
-                    <ul class="insight-list">
-                        <li>🔹 Designed project-based learning curriculum focused on real L&D case studies.</li>
-                        <li>🔹 Mentored 12 capstone projects; 3 implementations adopted by partner organizations.</li>
-                        <li>🔹 96% of participants reported increased confidence in instructional design.</li>
+                    <p><strong>Goal:</strong> Bridge academic theory with corporate readiness for 150+ students.</p>
+                    <ul>
+                        <li>Designed project-based curriculum with real L&D case studies.</li>
+                        <li>Mentored 12 capstone teams; 3 projects implemented by partner organizations.</li>
+                        <li><strong>Result:</strong> 96% reported increased confidence in instructional design.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- subtle extra note / swan elegance -->
-    <div class="footer-note">
-        <p class="mono">✦ Designed with swan-like precision · clarity & empathy in every curve ✦</p>
-        <p style="margin-top: 0.5rem; font-size: 0.7rem;">Century Gothic & Cinzel — effortless elegance</p>
+    <div class="footer">
+        <p class="mono">Zeina Sherif · Learning & Development Strategist</p>
+        <p style="margin-top: 0.5rem;">Evidence-based design · Measurable outcomes</p>
     </div>
 
     <script>
-        // ========== SWAN CURSOR FOLLOW (elegant and smooth) ==========
-        const swanCursor = document.getElementById('swan-cursor');
-        const ringSwan = document.getElementById('cursor-ring-swan');
-        let swanX = 0, swanY = 0;
+        // Cursor follow (professional, clean)
+        const cursor = document.getElementById('professional-cursor');
+        const ring = document.getElementById('cursor-ring-pro');
+        let cursorX = 0, cursorY = 0;
         let ringX = 0, ringY = 0;
 
-        window.addEventListener('mousemove', (e) => {
-            swanX = e.clientX - 14;
-            swanY = e.clientY - 14;
-            swanCursor.style.left = swanX + 'px';
-            swanCursor.style.top = swanY + 'px';
-            ringX = e.clientX - 21;
-            ringY = e.clientY - 21;
-            ringSwan.style.left = ringX + 'px';
-            ringSwan.style.top = ringY + 'px';
+        document.addEventListener('mousemove', (e) => {
+            cursorX = e.clientX - 10;
+            cursorY = e.clientY - 10;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            
+            ringX = e.clientX - 18;
+            ringY = e.clientY - 18;
+            ring.style.left = ringX + 'px';
+            ring.style.top = ringY + 'px';
         });
 
-        // subtle hover effect for interactive elements
-        const interactiveItems = document.querySelectorAll('a, .case-header, .cv-btn, .project-card');
-        interactiveItems.forEach(el => {
+        // Interactive elements hover effect
+        const interactive = document.querySelectorAll('a, .case-header, .cv-btn, .project-card');
+        interactive.forEach(el => {
             el.addEventListener('mouseenter', () => {
-                ringSwan.style.borderColor = '#C7A47B';
-                ringSwan.style.backgroundColor = 'rgba(199, 164, 123, 0.15)';
-                ringSwan.style.transform = 'scale(1.1) rotate(8deg)';
-                swanCursor.style.transform = 'scale(1.05)';
+                ring.style.borderColor = '#8BB9D4';
+                ring.style.backgroundColor = 'rgba(139, 185, 212, 0.08)';
+                ring.style.transform = 'scale(1.1)';
+                cursor.style.transform = 'scale(1.05)';
             });
             el.addEventListener('mouseleave', () => {
-                ringSwan.style.borderColor = '#C7B99B';
-                ringSwan.style.backgroundColor = 'rgba(210, 195, 165, 0.08)';
-                ringSwan.style.transform = 'rotate(5deg) scale(1)';
-                swanCursor.style.transform = 'scale(1)';
+                ring.style.borderColor = '#9BBFD4';
+                ring.style.backgroundColor = 'rgba(155, 191, 212, 0.04)';
+                ring.style.transform = 'scale(1)';
+                cursor.style.transform = 'scale(1)';
             });
         });
 
-        // ========== INTERSECTION OBSERVER (fade-up) ==========
+        // Intersection Observer for fade-up
         const fadeElements = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+        }, { threshold: 0.1 });
         fadeElements.forEach(el => observer.observe(el));
 
-        // ========== SKILL BARS ANIMATE ON VIEW ==========
-        const skillBars = document.querySelectorAll('.skill-progress');
-        const skillsSection = document.getElementById('skills');
-        let animatedSkills = false;
-
+        // Skill bars animation
+        const skillBars = document.querySelectorAll('.progress-fill');
         const skillsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !animatedSkills) {
+                if (entry.isIntersecting) {
                     skillBars.forEach(bar => {
-                        const widthVal = bar.getAttribute('data-width');
-                        if (widthVal) bar.style.width = widthVal + '%';
-                        else bar.style.width = '90%';
+                        const width = bar.getAttribute('data-width');
+                        if (width) bar.style.width = width + '%';
+                        else bar.style.width = '85%';
                     });
-                    animatedSkills = true;
+                    skillsObserver.disconnect();
                 }
             });
-        }, { threshold: 0.3 });
-        if (skillsSection) skillsObserver.observe(skillsSection);
+        }, { threshold: 0.4 });
+        if (document.querySelector('.skills-section')) skillsObserver.observe(document.querySelector('.skills-section'));
 
-        // fallback for any bar without data-width
-        document.querySelectorAll('.skill-progress').forEach(bar => {
-            if (!bar.getAttribute('data-width')) {
-                const parentDiv = bar.closest('.skill-bar')?.previousElementSibling;
-                if (parentDiv && parentDiv.innerText.includes('ADDIE')) bar.setAttribute('data-width', '95');
-                else if (parentDiv && parentDiv.innerText.includes('Instructional')) bar.setAttribute('data-width', '92');
-                else if (parentDiv && parentDiv.innerText.includes('Needs')) bar.setAttribute('data-width', '88');
-                else bar.setAttribute('data-width', '85');
-            }
-        });
-
-        // ========== ACCORDION / CASE STUDIES INTERACTION ==========
+        // Accordion for case studies
         const caseHeaders = document.querySelectorAll('.case-header');
         caseHeaders.forEach(header => {
-            header.addEventListener('click', (e) => {
-                e.stopPropagation();
+            header.addEventListener('click', () => {
                 const parent = header.closest('.case-item');
                 const content = parent.querySelector('.case-content');
-                const expandSymbol = header.querySelector('.case-expand');
+                const expandSpan = header.querySelector('.case-expand');
                 const isOpen = content.classList.contains('open');
                 
-                // close all others for clean UI
+                // Close others
                 document.querySelectorAll('.case-content').forEach(c => {
                     if (c !== content && c.classList.contains('open')) {
                         c.classList.remove('open');
-                        const otherExpand = c.closest('.case-item')?.querySelector('.case-expand');
-                        if (otherExpand) otherExpand.textContent = '+';
+                        const otherHeader = c.closest('.case-item')?.querySelector('.case-expand');
+                        if (otherHeader) otherHeader.textContent = '+';
                     }
                 });
                 
                 if (!isOpen) {
                     content.classList.add('open');
-                    if (expandSymbol) expandSymbol.textContent = '−';
+                    if (expandSpan) expandSpan.textContent = '−';
                 } else {
                     content.classList.remove('open');
-                    if (expandSymbol) expandSymbol.textContent = '+';
+                    if (expandSpan) expandSpan.textContent = '+';
                 }
             });
         });
-
-        // CV download notice (graceful)
-        const cvLink = document.querySelector('.cv-btn');
-        if (cvLink) {
-            cvLink.addEventListener('click', (e) => {
-                console.log('CV download — swan portfolio');
-            });
-        }
     </script>
 </body>
 </html>
