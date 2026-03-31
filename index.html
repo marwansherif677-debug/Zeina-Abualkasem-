@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Zeina Sherif | L&D Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none;
         }
 
         body {
-            font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', 'Trebuchet MS', 'Futura', 'Arial', sans-serif;
-            background: #F5FAFE;
+            font-family: 'Century Gothic', 'CenturyGothic', 'AppleGothic', 'Trebuchet MS', 'Futura', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #F8FBFE;
             color: #2C4F6E;
-            line-height: 1.6;
-            overflow-x: hidden;
+            line-height: 1.55;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Typography */
-        h1, h2, h3, h4, .logo, .nav-links a, .project-title, .case-title, .stat-title {
+        /* Typography - comfortable reading sizes */
+        h1, h2, h3, h4, .logo, .nav-links a, .project-title, .case-title {
             font-family: 'Cinzel', 'Georgia', 'Times New Roman', serif;
             font-weight: 600;
             letter-spacing: -0.2px;
@@ -32,66 +32,33 @@
             font-family: 'Century Gothic', monospace;
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1.8px;
+            letter-spacing: 1.5px;
             font-weight: 500;
         }
 
-        /* Professional cursor — minimal side-view swan head (subtle, not decorative) */
-        #professional-cursor {
+        /* Custom cursor - clean minimal */
+        #custom-cursor {
             position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #7A9BB3;
+            border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
-            width: 20px;
-            height: 20px;
-            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
-            transition: transform 0.1s ease;
+            transition: transform 0.05s;
         }
-        .cursor-swan {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-        .cursor-head {
-            position: absolute;
-            width: 14px;
-            height: 12px;
-            background: #E8E0D0;
-            border-radius: 50% 45% 55% 50%;
-            top: 4px;
-            left: 2px;
-        }
-        .cursor-beak {
-            position: absolute;
-            width: 6px;
-            height: 3px;
-            background: #CBAF91;
-            border-radius: 40% 60% 50% 40%;
-            top: 9px;
-            left: 13px;
-            transform: rotate(15deg);
-        }
-        .cursor-eye {
-            position: absolute;
-            width: 1.5px;
-            height: 1.5px;
-            background: #2C4F6E;
-            border-radius: 50%;
-            top: 7px;
-            left: 6px;
-        }
-        #cursor-ring-pro {
-            width: 36px;
-            height: 36px;
-            border: 1px solid #9BBFD4;
+        #cursor-ring {
             position: fixed;
+            width: 28px;
+            height: 28px;
+            border: 1.5px solid #B8D0E0;
             border-radius: 50%;
             pointer-events: none;
-            transition: all 0.2s ease;
             z-index: 9998;
-            background: rgba(155, 191, 212, 0.04);
+            transition: all 0.15s ease;
         }
 
-        /* Navigation — clean, minimal */
+        /* Navigation - clean and readable */
         nav {
             position: fixed;
             top: 0;
@@ -100,33 +67,35 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(245, 250, 254, 0.92);
-            backdrop-filter: blur(12px);
+            background: rgba(248, 251, 254, 0.96);
+            backdrop-filter: blur(8px);
             z-index: 1000;
-            border-bottom: 1px solid #E2EDF5;
+            border-bottom: 1px solid #E4EEF5;
         }
         .logo {
             font-size: 1.2rem;
             color: #4A7B96;
-            letter-spacing: -0.3px;
+            font-weight: 600;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
         }
         .nav-links a {
             text-decoration: none;
-            color: #4A7B96;
+            color: #5C7F97;
             font-weight: 500;
-            margin-left: 2rem;
             font-size: 0.85rem;
             transition: color 0.2s;
-            font-family: 'Cinzel', serif;
         }
         .nav-links a:hover {
-            color: #2C5F7F;
+            color: #3C6E8C;
         }
         .cv-btn {
-            border: 1px solid #C2DAE8;
-            padding: 6px 18px;
-            border-radius: 30px;
-            background: transparent;
+            border: 1px solid #C8DDE9;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
             transition: all 0.2s;
         }
         .cv-btn:hover {
@@ -135,108 +104,143 @@
             border-color: #4A7B96;
         }
 
-        /* Hero Section */
+        /* Hero Section - balanced spacing */
         .hero {
             display: flex;
             min-height: 100vh;
-            padding: 0;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         .hero-left {
             flex: 1.2;
-            background: linear-gradient(120deg, #EFF5FA 0%, #E9F2F8 100%);
-            padding: 12% 8%;
+            background: linear-gradient(135deg, #F0F6FB 0%, #ECF4F9 100%);
+            padding: 10% 7%;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
         .hero-right {
-            flex: 0.8;
-            background: #F9FCFE;
-            padding: 12% 8%;
+            flex: 0.9;
+            background: #FFFFFF;
+            padding: 10% 7%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            border-left: 1px solid #E5EEF5;
+            border-left: 1px solid #E8F0F5;
+        }
+        .hero-tag {
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
         }
         .hero-left h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            color: #3C6E8C;
-            margin-top: 1rem;
+            font-size: 3.2rem;
+            line-height: 1.25;
+            color: #386A84;
+            margin: 0.5rem 0 1rem 0;
+            font-weight: 700;
         }
         .hero-right h2 {
-            font-size: 1.7rem;
+            font-size: 1.5rem;
             font-weight: 500;
-            color: #5F8CAA;
+            color: #5C819B;
             line-height: 1.4;
         }
-        .badge {
-            background: #E9F0F5;
+        .hero-badge {
+            background: #EFF4F9;
             display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
             font-size: 0.7rem;
+            margin-top: 1.5rem;
         }
 
-        /* Stats */
+        /* Stats - clean metrics */
         .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
             background: #FFFFFF;
             padding: 2rem 8%;
+            border-top: 1px solid #E8F0F5;
+            border-bottom: 1px solid #E8F0F5;
+            flex-wrap: wrap;
+        }
+        .stat-item {
             text-align: center;
-            border-top: 1px solid #E9F0F5;
-            border-bottom: 1px solid #E9F0F5;
         }
-        .stat-item h3 {
-            font-size: 2rem;
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
             color: #4A7B96;
-            margin-bottom: 0.2rem;
+            font-family: 'Cinzel', serif;
+            margin-bottom: 0.25rem;
         }
-        .stat-item p {
+        .stat-label {
             font-size: 0.7rem;
             letter-spacing: 1px;
             color: #7A9BB3;
         }
 
-        /* Skills */
-        .skills-section {
-            padding: 5rem 8%;
+        /* Section containers */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
         }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-sub {
+            color: #7A9BB3;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            color: #386A84;
+            margin-top: 0.25rem;
+        }
+
+        /* Skills grid */
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
-        .skill-group h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.2rem;
-            color: #3C6E8C;
+        .skill-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 24px;
+            border: 1px solid #E8F0F5;
+        }
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #4A7B96;
         }
         .skill-item {
             margin-bottom: 1.2rem;
         }
         .skill-name {
             font-weight: 600;
+            font-size: 0.9rem;
             margin-bottom: 0.3rem;
             color: #4A6F88;
         }
         .progress-bar {
             height: 4px;
-            background: #E2EDF5;
+            background: #E4EEF5;
             border-radius: 4px;
             overflow: hidden;
         }
         .progress-fill {
             height: 100%;
-            background: #8BB9D4;
+            background: #8BB5CC;
             width: 0;
-            transition: width 0.9s ease;
             border-radius: 4px;
-        }
-        .lang-row {
-            margin-bottom: 1rem;
+            transition: width 0.8s ease;
         }
         .lang-dots {
             display: flex;
@@ -247,56 +251,49 @@
             width: 9px;
             height: 9px;
             border-radius: 50%;
-            background: #D0E2EE;
+            background: #D4E2EC;
         }
         .dot.filled {
-            background: #8BB9D4;
+            background: #8BB5CC;
         }
-        hr {
-            margin: 1.5rem 0;
-            border-color: #E9F0F5;
+        .tools-list {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #6D8EA6;
         }
 
-        /* Projects Grid */
-        .projects-section {
-            padding: 5rem 8%;
-            background: #F9FCFE;
-        }
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: #3C6E8C;
-        }
-        .section-sub {
-            color: #7A9BB3;
-            margin-bottom: 2rem;
-        }
+        /* Projects grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 1rem;
         }
         .project-card {
             background: white;
             border-radius: 20px;
             padding: 1.8rem;
-            border: 1px solid #E9F0F5;
-            transition: all 0.25s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #E8F0F5;
+            transition: all 0.25s;
         }
         .project-card:hover {
-            transform: translateY(-4px);
-            border-color: #C2DAE8;
-            box-shadow: 0 12px 24px -12px rgba(60, 110, 140, 0.12);
+            transform: translateY(-3px);
+            border-color: #C8DDE9;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
         }
         .project-icon {
             font-size: 1.8rem;
             margin-bottom: 1rem;
         }
         .project-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             margin-bottom: 0.5rem;
             color: #4A7B96;
+        }
+        .project-card p {
+            font-size: 0.9rem;
+            color: #5A7D95;
+            line-height: 1.5;
         }
         .project-link {
             display: inline-block;
@@ -305,84 +302,84 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 0.85rem;
-            border-bottom: 1px solid #C2DAE8;
+            border-bottom: 1px solid #C8DDE9;
         }
         .project-link:hover {
-            color: #3C6E8C;
+            color: #386A84;
         }
 
-        /* Case Studies Accordion */
-        .cases-section {
-            padding: 5rem 8%;
-        }
+        /* Case studies accordion */
         .case-item {
             margin-bottom: 1rem;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #E8F0F5;
+            overflow: hidden;
         }
         .case-header {
-            background: white;
-            border: 1px solid #E9F0F5;
-            border-radius: 16px;
             padding: 1.2rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            transition: all 0.2s;
+            background: white;
+            transition: background 0.2s;
         }
         .case-header:hover {
-            background: #FDFFFE;
-            border-color: #C2DAE8;
+            background: #FCFEFF;
         }
         .case-title {
             font-weight: 600;
-            font-size: 1.1rem;
-            color: #3C6E8C;
+            font-size: 1rem;
+            color: #386A84;
         }
         .case-meta {
             font-size: 0.7rem;
             color: #8AADc2;
-            font-family: monospace;
         }
         .case-expand {
-            font-size: 1.3rem;
-            color: #8BB9D4;
+            font-size: 1.2rem;
+            color: #8BB5CC;
+            font-weight: 500;
         }
         .case-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease;
-            background: #FFFFFF;
-            border: 1px solid transparent;
-            border-radius: 0 0 16px 16px;
-            margin-top: -4px;
+            transition: max-height 0.35s ease-out;
+            padding: 0 1.5rem;
+            border-top: 1px solid transparent;
         }
         .case-content.open {
-            max-height: 500px;
-            padding: 1.2rem 1.5rem 1.5rem;
-            border-color: #E9F0F5;
-            border-top: none;
+            max-height: 400px;
+            padding: 0 1.5rem 1.2rem 1.5rem;
+            border-top-color: #E8F0F5;
         }
         .case-content ul {
             padding-left: 1.2rem;
-            margin-top: 0.8rem;
+            margin: 0.8rem 0;
         }
         .case-content li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+        .case-content p {
+            font-size: 0.9rem;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 2rem 8%;
-            border-top: 1px solid #E9F0F5;
+            padding: 2rem;
+            border-top: 1px solid #E8F0F5;
             font-size: 0.7rem;
             color: #8AADc2;
+            background: #F8FBFE;
         }
 
-        /* Animations */
+        /* Animation */
         .fade-up {
             opacity: 0;
-            transform: translateY(24px);
+            transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
         .fade-up.visible {
@@ -390,32 +387,38 @@
             transform: translateY(0);
         }
 
-        @media (max-width: 800px) {
+        /* Responsive */
+        @media (max-width: 900px) {
+            body { font-size: 15px; }
             .hero { flex-direction: column; }
-            .skills-grid { grid-template-columns: 1fr; }
-            .stats { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-            .case-header { flex-wrap: wrap; gap: 0.5rem; }
-            nav { padding: 0.8rem 5%; }
-            .nav-links a { margin-left: 1rem; }
+            .hero-left, .hero-right { padding: 4rem 2rem; }
+            .hero-left h1 { font-size: 2.5rem; }
+            .hero-right h2 { font-size: 1.3rem; }
+            .skills-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .stats { gap: 2rem; }
+            .container { padding: 3rem 1.5rem; }
+            .nav-links { gap: 1rem; }
         }
 
-        ::selection {
-            background: #D9E8F2;
-            color: #2C4F6E;
+        @media (max-width: 600px) {
+            .hero-left h1 { font-size: 2rem; }
+            .section-title { font-size: 1.6rem; }
+            .stats { gap: 1.5rem; }
+            .stat-number { font-size: 1.8rem; }
+        }
+
+        /* Hide cursor on touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            #custom-cursor, #cursor-ring { display: none; }
+            body { cursor: auto; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Minimal professional cursor (side-view swan head, subtle) -->
-    <div id="professional-cursor">
-        <div class="cursor-swan">
-            <div class="cursor-head"></div>
-            <div class="cursor-beak"></div>
-            <div class="cursor-eye"></div>
-        </div>
-    </div>
-    <div id="cursor-ring-pro"></div>
+    <!-- Clean custom cursor -->
+    <div id="custom-cursor"></div>
+    <div id="cursor-ring"></div>
 
     <!-- Navigation -->
     <nav>
@@ -428,167 +431,169 @@
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-left">
-            <p class="mono" style="color:#7A9BB3;">L&D Strategist</p>
+            <p class="mono hero-tag" style="color:#7A9BB3;">Learning & Development Strategist</p>
             <h1>Shortening learning curves.<br>Performance follows.</h1>
         </div>
         <div class="hero-right">
             <h2>Building L&D functions from the ground up — strategic, evidence-based, and human-centered.</h2>
-            <div style="margin-top: 1.8rem;">
-                <p class="mono badge">ADDIE · Instructional Design · Scalable Impact</p>
-            </div>
+            <p class="mono hero-badge">ADDIE · Instructional Design · Scalable Impact</p>
         </div>
     </section>
 
-    <!-- Stats (professional metrics, no GPA) -->
+    <!-- Stats Section -->
     <div class="stats">
-        <div class="stat-item"><h3>2025</h3><p class="mono">Dept. Founder</p></div>
-        <div class="stat-item"><h3>ADDIE</h3><p class="mono">Framework Mastery</p></div>
-        <div class="stat-item"><h3>3+</h3><p class="mono">Years Experience</p></div>
+        <div class="stat-item"><div class="stat-number">2025</div><div class="stat-label mono">Dept. Founder</div></div>
+        <div class="stat-item"><div class="stat-number">ADDIE</div><div class="stat-label mono">Framework Mastery</div></div>
+        <div class="stat-item"><div class="stat-number">3+</div><div class="stat-label mono">Years Experience</div></div>
     </div>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills-section fade-up">
-        <p class="mono" style="color:#7A9BB3;">Core Competencies</p>
+    <section id="skills" class="container fade-up">
+        <div class="section-header">
+            <p class="mono" style="color:#7A9BB3;">Expertise</p>
+            <h2 class="section-title">Core Competencies</h2>
+        </div>
         <div class="skills-grid">
-            <div class="skill-group">
+            <div class="skill-card">
                 <h3>Methodology</h3>
                 <div class="skill-item"><div class="skill-name">ADDIE Model</div><div class="progress-bar"><div class="progress-fill" data-width="95"></div></div></div>
                 <div class="skill-item"><div class="skill-name">Instructional Design</div><div class="progress-bar"><div class="progress-fill" data-width="92"></div></div></div>
-                <div class="skill-item"><div class="skill-name">Needs Analysis</div><div class="progress-bar"><div class="progress-fill" data-width="88"></div></div></div>
-                <div class="skill-item"><div class="skill-name">Learning Platforms (LXP/LMS)</div><div class="progress-bar"><div class="progress-fill" data-width="85"></div></div></div>
+                <div class="skill-item"><div class="skill-name">Needs Analysis & Evaluation</div><div class="progress-bar"><div class="progress-fill" data-width="88"></div></div></div>
+                <div class="skill-item"><div class="skill-name">Learning Platforms (LMS/LXP)</div><div class="progress-bar"><div class="progress-fill" data-width="85"></div></div></div>
             </div>
-            <div class="skill-group">
-                <h3>Languages</h3>
-                <div class="lang-row"><div class="skill-name">English — Professional</div><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
-                <div class="lang-row"><div class="skill-name">Arabic — Native</div><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
-                <div class="lang-row"><div class="skill-name">French — Intermediate</div><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
-                <hr>
-                <p class="mono" style="margin-top: 0.5rem;">Tools: Articulate · Canva · Miro · Notion · Genially · Animaker</p>
+            <div class="skill-card">
+                <h3>Languages & Tools</h3>
+                <div class="skill-item"><div class="skill-name">English — Professional</div><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div></div></div>
+                <div class="skill-item"><div class="skill-name">Arabic — Native</div><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div></div></div>
+                <div class="skill-item"><div class="skill-name">French — Intermediate</div><div class="lang-dots"><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+                <div class="tools-list mono">Articulate · Canva · Miro · Notion · Genially · Animaker</div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section: Animaker + Genially -->
-    <section id="projects" class="projects-section fade-up">
-        <p class="mono" style="color:#7A9BB3;">Featured Work</p>
-        <h2 class="section-title">Interactive Learning Projects</h2>
-        <p class="section-sub">Multimedia and gamified solutions designed for engagement and retention.</p>
+    <!-- Featured Projects: Animaker + Genially -->
+    <section id="projects" class="container fade-up" style="background: #FCFEFF;">
+        <div class="section-header">
+            <p class="mono" style="color:#7A9BB3;">Featured Work</p>
+            <h2 class="section-title">Interactive Learning Projects</h2>
+            <p class="section-sub">Multimedia and gamified solutions for engagement and retention</p>
+        </div>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-icon">🎬</div>
                 <h3>Animaker · L&D Motion Video</h3>
-                <p>Animated explainer video that visualizes instructional design frameworks. Used for onboarding and learning culture initiatives.</p>
+                <p>Animated explainer video visualizing instructional design frameworks. Used for onboarding and learning culture initiatives.</p>
                 <a href="https://app.animaker.com/video/EDUNP496D486V0SS" target="_blank" class="project-link">View project →</a>
             </div>
             <div class="project-card">
                 <div class="project-icon">🧩</div>
                 <h3>Genially · Puzzle Game</h3>
-                <p>Interactive puzzle game that reinforces key L&D concepts through gamified learning. Designed for knowledge retention and engagement.</p>
+                <p>Interactive puzzle game reinforcing L&D concepts through gamified learning. Designed for knowledge retention.</p>
                 <a href="https://view.genially.com/69ad72640f5a46e418246c16/interactive-content-puzzle-game" target="_blank" class="project-link">Play game →</a>
             </div>
         </div>
     </section>
 
-    <!-- Case Studies (no FinTech references) -->
-    <section id="work" class="cases-section fade-up">
-        <p class="mono" style="color:#7A9BB3;">Case Studies</p>
-        <h2 class="section-title">Learning Transformations</h2>
-        <div class="case-wrapper">
-            <div class="case-item">
-                <div class="case-header">
-                    <span class="case-title">L&D Department · from 0 to 1</span>
-                    <span class="case-meta">Corporate | 2025</span>
-                    <span class="case-expand">+</span>
-                </div>
-                <div class="case-content">
-                    <p><strong>Challenge:</strong> Organization lacked a centralized learning function; new hires faced long ramp-up times.</p>
-                    <ul>
-                        <li>Designed and launched full L&D framework using ADDIE methodology.</li>
-                        <li>Developed 12 micro-learning modules across 5 core roles within 8 weeks.</li>
-                        <li><strong>Result:</strong> 34% reduction in time-to-competency, 92% learner satisfaction.</li>
-                    </ul>
-                    <p class="mono" style="margin-top: 0.8rem;">Tools: Articulate Rise · Miro · LMS Integration</p>
-                </div>
+    <!-- Case Studies (no FinTech) -->
+    <section id="work" class="container fade-up">
+        <div class="section-header">
+            <p class="mono" style="color:#7A9BB3;">Case Studies</p>
+            <h2 class="section-title">Learning Transformations</h2>
+        </div>
+        
+        <div class="case-item">
+            <div class="case-header">
+                <span class="case-title">L&D Department · from 0 to 1</span>
+                <span class="case-meta">Corporate | 2025</span>
+                <span class="case-expand">+</span>
             </div>
-            <div class="case-item">
-                <div class="case-header">
-                    <span class="case-title">Performance Consulting · Retail Leadership</span>
-                    <span class="case-meta">Retail Chain | 2024</span>
-                    <span class="case-expand">+</span>
-                </div>
-                <div class="case-content">
-                    <p><strong>Context:</strong> Store managers lacked coaching skills, contributing to high frontline turnover.</p>
-                    <ul>
-                        <li>Conducted needs analysis via focus groups and observational research.</li>
-                        <li>Designed blended program: virtual workshops + on-the-job coaching toolkit.</li>
-                        <li><strong>Result:</strong> 27% decrease in frontline turnover, 89% manager adoption.</li>
-                    </ul>
-                    <p class="mono">🏆 Internal Innovation in Learning Award</p>
-                </div>
+            <div class="case-content">
+                <p><strong>Challenge:</strong> Organization lacked a centralized learning function; new hires faced extended ramp-up time.</p>
+                <ul>
+                    <li>Designed and launched full L&D framework using ADDIE methodology.</li>
+                    <li>Developed 12 micro-learning modules across 5 core roles within 8 weeks.</li>
+                    <li><strong>Result:</strong> 34% reduction in time-to-competency, 92% learner satisfaction.</li>
+                </ul>
+                <p class="mono" style="margin-top: 0.5rem;">Tools: Articulate Rise · Miro · LMS Integration</p>
             </div>
-            <div class="case-item">
-                <div class="case-header">
-                    <span class="case-title">Academic Excellence Program</span>
-                    <span class="case-meta">Higher Education | 2023</span>
-                    <span class="case-expand">+</span>
-                </div>
-                <div class="case-content">
-                    <p><strong>Goal:</strong> Bridge academic theory with corporate readiness for 150+ students.</p>
-                    <ul>
-                        <li>Designed project-based curriculum with real L&D case studies.</li>
-                        <li>Mentored 12 capstone teams; 3 projects implemented by partner organizations.</li>
-                        <li><strong>Result:</strong> 96% reported increased confidence in instructional design.</li>
-                    </ul>
-                </div>
+        </div>
+
+        <div class="case-item">
+            <div class="case-header">
+                <span class="case-title">Performance Consulting · Retail Leadership</span>
+                <span class="case-meta">Retail Chain | 2024</span>
+                <span class="case-expand">+</span>
+            </div>
+            <div class="case-content">
+                <p><strong>Context:</strong> Store managers lacked coaching skills, contributing to high frontline turnover.</p>
+                <ul>
+                    <li>Conducted needs analysis via focus groups and observational research.</li>
+                    <li>Designed blended program: virtual workshops + on-the-job coaching toolkit.</li>
+                    <li><strong>Result:</strong> 27% decrease in frontline turnover, 89% manager adoption rate.</li>
+                </ul>
+                <p class="mono">🏆 Internal Innovation in Learning Award</p>
+            </div>
+        </div>
+
+        <div class="case-item">
+            <div class="case-header">
+                <span class="case-title">Academic Excellence Program</span>
+                <span class="case-meta">Higher Education | 2023</span>
+                <span class="case-expand">+</span>
+            </div>
+            <div class="case-content">
+                <p><strong>Goal:</strong> Bridge academic theory with corporate readiness for 150+ students.</p>
+                <ul>
+                    <li>Designed project-based curriculum with real L&D case studies.</li>
+                    <li>Mentored 12 capstone teams; 3 projects implemented by partner organizations.</li>
+                    <li><strong>Result:</strong> 96% reported increased confidence in instructional design.</li>
+                </ul>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <div class="footer">
         <p class="mono">Zeina Sherif · Learning & Development Strategist</p>
-        <p style="margin-top: 0.5rem;">Evidence-based design · Measurable outcomes</p>
+        <p style="margin-top: 0.4rem;">Evidence-based design · Measurable outcomes</p>
     </div>
 
     <script>
-        // Cursor follow (professional, clean)
-        const cursor = document.getElementById('professional-cursor');
-        const ring = document.getElementById('cursor-ring-pro');
-        let cursorX = 0, cursorY = 0;
-        let ringX = 0, ringY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            cursorX = e.clientX - 10;
-            cursorY = e.clientY - 10;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
+        // Clean cursor
+        const cursor = document.getElementById('custom-cursor');
+        const ring = document.getElementById('cursor-ring');
+        
+        if (window.matchMedia("(hover: hover)").matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX - 3 + 'px';
+                cursor.style.top = e.clientY - 3 + 'px';
+                ring.style.left = e.clientX - 14 + 'px';
+                ring.style.top = e.clientY - 14 + 'px';
+            });
             
-            ringX = e.clientX - 18;
-            ringY = e.clientY - 18;
-            ring.style.left = ringX + 'px';
-            ring.style.top = ringY + 'px';
-        });
-
-        // Interactive elements hover effect
-        const interactive = document.querySelectorAll('a, .case-header, .cv-btn, .project-card');
-        interactive.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                ring.style.borderColor = '#8BB9D4';
-                ring.style.backgroundColor = 'rgba(139, 185, 212, 0.08)';
-                ring.style.transform = 'scale(1.1)';
-                cursor.style.transform = 'scale(1.05)';
+            const interactElements = document.querySelectorAll('a, .case-header, .cv-btn, .project-card, button');
+            interactElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    ring.style.width = '36px';
+                    ring.style.height = '36px';
+                    ring.style.borderColor = '#8BB5CC';
+                    ring.style.backgroundColor = 'rgba(139, 181, 204, 0.08)';
+                    cursor.style.transform = 'scale(1.2)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    ring.style.width = '28px';
+                    ring.style.height = '28px';
+                    ring.style.borderColor = '#B8D0E0';
+                    ring.style.backgroundColor = 'transparent';
+                    cursor.style.transform = 'scale(1)';
+                });
             });
-            el.addEventListener('mouseleave', () => {
-                ring.style.borderColor = '#9BBFD4';
-                ring.style.backgroundColor = 'rgba(155, 191, 212, 0.04)';
-                ring.style.transform = 'scale(1)';
-                cursor.style.transform = 'scale(1)';
-            });
-        });
+        }
 
-        // Intersection Observer for fade-up
+        // Fade-up observer
         const fadeElements = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -605,13 +610,13 @@
                     skillBars.forEach(bar => {
                         const width = bar.getAttribute('data-width');
                         if (width) bar.style.width = width + '%';
-                        else bar.style.width = '85%';
                     });
                     skillsObserver.disconnect();
                 }
             });
-        }, { threshold: 0.4 });
-        if (document.querySelector('.skills-section')) skillsObserver.observe(document.querySelector('.skills-section'));
+        }, { threshold: 0.3 });
+        const skillsSection = document.querySelector('#skills');
+        if (skillsSection) skillsObserver.observe(skillsSection);
 
         // Accordion for case studies
         const caseHeaders = document.querySelectorAll('.case-header');
@@ -622,7 +627,7 @@
                 const expandSpan = header.querySelector('.case-expand');
                 const isOpen = content.classList.contains('open');
                 
-                // Close others
+                // Close others for clean UX
                 document.querySelectorAll('.case-content').forEach(c => {
                     if (c !== content && c.classList.contains('open')) {
                         c.classList.remove('open');
@@ -642,4 +647,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
