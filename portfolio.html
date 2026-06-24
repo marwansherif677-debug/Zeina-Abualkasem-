@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Zeina Sherif | L&D Specialist Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #FFFFFF;
+            color: #1A365D;
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, .logo, .nav-links a, .project-title, .case-title, .stat-number {
+            font-family: 'Cinzel', 'Georgia', serif;
+            font-weight: 600;
+            letter-spacing: -0.2px;
+        }
+
+        .mono {
+            font-family: 'Inter', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: #5C8DAA;
+        }
+
+        /* Custom cursor - subtle pearl */
+        #custom-cursor {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #A7C5D9;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.05s;
+        }
+        #cursor-ring {
+            position: fixed;
+            width: 28px;
+            height: 28px;
+            border: 1.5px solid #C2DCEC;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.15s ease;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            border-bottom: 1px solid #E8F0F5;
+        }
+        .logo {
+            font-size: 1.2rem;
+            color: #4C7F9C;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #5A7D95;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #4C7F9C;
+        }
+        .cv-btn {
+            border: 1px solid #4C7F9C;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            color: #4C7F9C !important;
+            transition: all 0.2s;
+        }
+        .cv-btn:hover {
+            background: #4C7F9C;
+            color: white !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 80px;
+        }
+        .hero-left {
+            flex: 1.2;
+            background: #F9FCFE;
+            padding: 8% 7%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .hero-right {
+            flex: 0.9;
+            background: #FFFFFF;
+            padding: 8% 7%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid #EAF3F9;
+        }
+        .hero-tag {
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .hero-left h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            color: #2C4F6E;
+            margin: 0.5rem 0 1.5rem 0;
+            font-weight: 700;
+        }
+        .hero-left p {
+            font-size: 1.1rem;
+            color: #4A5568;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        .hero-right h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #4C7F9C;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+        .hero-right p {
+            font-size: 0.95rem;
+            color: #4A5568;
+            margin-bottom: 1.5rem;
+        }
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: #4C7F9C;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover {
+            background: #3A627A;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 6rem;
+            background: #FCFEFE;
+            padding: 3rem 8%;
+            border-top: 1px solid #EAF3F9;
+            border-bottom: 1px solid #EAF3F9;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+            max-width: 200px;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4C7F9C;
+            margin-bottom: 0.25rem;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #5A7D95;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .stat-desc {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 0.25rem;
+        }
+
+        /* Section Containers */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-sub {
+            color: #4C7F9C;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            color: #2C4F6E;
+            margin-top: 0.5rem;
+        }
+
+        /* Business Impact Section */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        .impact-card {
+            background: #F9FCFE;
+            border: 1px solid #EAF3F9;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            transition: transform 0.2s;
+        }
+        .impact-card:hover {
+            transform: translateY(-4px);
+        }
+        .impact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4C7F9C;
+        }
+        .impact-card h3 {
+            font-size: 1.3rem;
+            color: #2C4F6E;
+            margin-bottom: 1rem;
+        }
+        .impact-card p {
+            font-size: 0.95rem;
+            color: #4A5568;
+        }
+
+        /* Custom Projects Layout */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+        .project-block {
+            display: flex;
+            background: white;
+            border-radius: 24px;
+            border: 1px solid #EAF3F9;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(92, 141, 170, 0.04);
+        }
+        .project-info {
+            flex: 1.2;
+            padding: 3rem;
+        }
+        .project-meta {
+            flex: 0.8;
+            background: #F9FCFE;
+            padding: 3rem;
+            border-left: 1px solid #EAF3F9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .tag {
+            background: #EBF4FA;
+            color: #2C4F6E;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .project-info h3 {
+            font-size: 1.6rem;
+            color: #2C4F6E;
+            margin-bottom: 1rem;
+        }
+        .project-info p {
+            font-size: 1rem;
+            color: #4A5568;
+            margin-bottom: 1.5rem;
+        }
+        .metrics-box {
+            background: white;
+            border: 1px solid #EAF3F9;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        .metrics-box h4 {
+            font-size: 0.85rem;
+            color: #4C7F9C;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .metrics-box p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2C4F6E;
+            margin: 0;
+        }
+
+        /* Toolkit & Standards Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        .skill-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid #EAF3F9;
+            box-shadow: 0 2px 8px rgba(92, 141, 170, 0.03);
+        }
+        .skill-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: #2C4F6E;
+        }
+        .tool-category {
+            margin-bottom: 1.5rem;
+        }
+        .tool-category h4 {
+            font-size: 0.9rem;
+            color: #4C7F9C;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .tag-tool {
+            background: #FFFFFF;
+            border: 1px solid #D4E5EF;
+            color: #4A5568;
+            font-size: 0.85rem;
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2C4F6E;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        footer h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        footer p {
+            color: #A7C5D9;
+            max-width: 500px;
+            margin: 0 auto 2rem auto;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #4C7F9C;
+            padding-bottom: 0.2rem;
+        }
+
+        @media (max-width: 968px) {
+            .hero { flex-direction: column; }
+            .hero-left, .hero-right { padding: 3rem 1.5rem; border: none; }
+            .project-block { flex-direction: column; }
+            .project-meta { border-left: none; border-top: 1px solid #EAF3F9; padding: 2rem; }
+            .project-info { padding: 2rem; }
+            .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .stats { gap: 2rem; justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="custom-cursor"></div>
+    <div id="cursor-ring"></div>
+
+    <nav>
+        <a href="#" class="logo">ZEINA SHERIF</a>
+        <div class="nav-links">
+            <a href="#impact">Impact Focus</a>
+            <a href="#projects">Case Studies</a>
+            <a href="#toolkit">Expertise Matrix</a>
+            <a href="#" class="cv-btn">Download Resume</a>
+        </div>
+    </nav>
+
+    <!-- Strategic Hero Entry -->
+    <section class="hero">
+        <div class="hero-left">
+            <p class="mono">Learning & Development Specialist</p>
+            <h1>Engineering corporate training frameworks that secure operational excellence.</h1>
+            <p>I design and build data-backed instructional frameworks that bridge organizational skills gaps, stabilize employee retention, and optimize workforce performance inside large-scale enterprise structures.</p>
+            <div class="cta-group">
+                <a href="#projects" class="btn-primary">Explore Case Studies</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <h2>The Core Philosophy</h2>
+            <p>In high-stakes corporate environments, training initiatives cannot afford to be passive overhead. They must act as systematic drivers of business value.</p>
+            <p>By shifting away from simple task-completion tracking and moving entirely toward high-impact business outcomes, I ensure that corporate learning assets remain fundamentally irreplaceable by emerging AI automation architectures.</p>
+            <div style="margin-top: 1rem;">
+                <span class="tag" style="background:#EBF4FA; color:#2C4F6E;">✓ COPC Compliant</span>
+                <span class="tag" style="background:#EBF4FA; color:#2C4F6E;">✓ Data-Driven ROI</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hard-Value Performance Analytics -->
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">94%</div>
+            <div class="stat-label">Retention Stability</div>
+            <div class="stat-desc">Average post-training retention rate achieved across structured enterprise cohorts.</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">-35%</div>
+            <div class="stat-label">Time-to-Productivity</div>
+            <div class="stat-desc">Reduction in foundational onboarding timelines via targeted adaptive learning patterns.</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">COPC Compliance</div>
+            <div class="stat-desc">Full alignment of learning evaluation matrices with international customer operations standards.</div>
+        </div>
+    </section>
+
+    <!-- Business Alignment Philosophy -->
+    <section id="impact" class="container">
+        <div class="section-header">
+            <p class="section-sub">Methodology</p>
+            <h2 class="section-title">The Operational Architecture</h2>
+        </div>
+        <div class="impact-grid">
+            <div class="impact-card">
+                <div class="impact-icon">📊</div>
+                <h3>Diagnostic Data Auditing</h3>
+                <p>Leveraging SQL databases and relational BI tracking layers to accurately pin down performance choke points before scoping any program blueprints.</p>
+            </div>
+            <div class="impact-card">
+                <div class="impact-icon">⚙️</div>
+                <h3>COPC Standardization</h3>
+                <p>Hard-coding structured compliance benchmarks cleanly into customer-facing operations workflows to keep accuracy metrics pristine and error rates controlled.</p>
+            </div>
+            <div class="impact-card">
+                <div class="impact-icon">📈</div>
+                <h3>Measurable ROI Tracking</h3>
+                <p>Structuring clean, multi-tiered attribution engines that actively correlate curriculum completion directly to core financial and operational bottom lines.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Elite Enterprise Case Studies Layout -->
+    <section id="projects" class="container" style="background: #FAFDFE; max-width: 100%; width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header">
+                <p class="section-sub">Portfolio</p>
+                <h2 class="section-title">High-Stakes Instructional Proofs</h2>
+            </div>
+
+            <div class="projects-list">
+                <!-- Case Study 1 -->
+                <div class="project-block">
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="tag">COPC Implementation</span>
+                            <span class="tag">Enterprise Operations</span>
+                            <span class="tag">Advanced Instructional Design</span>
+                        </div>
+                        <h3>Optimizing Frontline Quality Performance Matrix</h3>
+                        <p><strong>The Challenge:</strong> A massive customer operations division was suffering from inconsistent quality benchmarks and volatile agent onboarding cycles that threatened critical service level agreement (SLA) commitments.</p>
+                        <p><strong>The Solution:</strong> Built a comprehensive, highly interactive curriculum engineered explicitly from COPC operational guidelines. Leveraged structured scenario maps inside Articulate to simulate live-fire operational pressures during training environments.</p>
+                        <p><strong>The Execution:</strong> Embedded rigorous data analytics loops utilizing automated reporting models to log real-time performance variables and catch training deficiencies early.</p>
+                    </div>
+                    <div class="project-meta">
+                        <div>
+                            <p class="mono" style="margin-bottom: 0.5rem;">Tangible Outcomes</p>
+                            <div class="metrics-box">
+                                <h4>Quality Score Delta</h4>
+                                <p>+18% Average Improvement</p>
+                            </div>
+                            <div class="metrics-box">
+                                <h4>SLA Deviation</h4>
+                                <p>Reduced to Near Zero</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1.5rem;">
+                            <a href="#" class="btn-primary" style="font-size: 0.8rem; padding: 0.6rem 1.2rem;">Analyze Full Artifact Suite</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="project-block">
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="tag">LMS Infrastructure</span>
+                            <span class="tag">Data Analytics</span>
+                            <span class="tag">Interactive Media Production</span>
+                        </div>
+                        <h3>Scaling Adaptive LMS Infrastructures Globally</h3>
+                        <p><strong>The Challenge:</strong> Legacy instructional content structures were completely failing to provide executive leadership with granular visibility into structural skills gaps across specialized internal roles.</p>
+                        <p><strong>The Solution:</strong> Fully overhauled and re-architected standard Moodle LMS platforms to natively map performance tracking fields. Scripted complex scenario modules and high-fidelity video motion assets via Animaker and professional tooling to dramatically lift baseline engagement indices.</p>
+                        <p><strong>The Execution:</strong> Modeled raw relational system telemetry into functional corporate reporting pipelines, generating clean data exports for immediate board-level review.</p>
+                    </div>
+                    <div class="project-meta">
+                        <div>
+                            <p class="mono" style="margin-bottom: 0.5rem;">Tangible Outcomes</p>
+                            <div class="metrics-box">
+                                <h4>Data Collection Precision</h4>
+                                <p>Granular Tracking Enabled</p>
+                            </div>
+                            <div class="metrics-box">
+                                <h4>Program Engagement</h4>
+                                <p>+42% Interactive Retention</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1.5rem;">
+                            <a href="#" class="btn-primary" style="font-size: 0.8rem; padding: 0.6rem 1.2rem;">View Architecture Map</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Competence and Frameworks Matrix -->
+    <section id="toolkit" class="container">
+        <div class="section-header">
+            <p class="section-sub">Expertise Matrix</p>
+            <h2 class="section-title">The Technical & Administrative Stack</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Core Tooling Stack</h3>
+                
+                <div class="tool-category">
+                    <h4>Instructional Tech & Systems</h4>
+                    <div class="tags-container">
+                        <span class="tag-tool">Articulate Storyline / Rise</span>
+                        <span class="tag-tool">Moodle LMS</span>
+                        <span class="tag-tool">Animaker</span>
+                        <span class="tag-tool">Canva Pro</span>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4>Analytical Data Engine</h4>
+                    <div class="tags-container">
+                        <span class="tag-tool">SQL (MySQL)</span>
+                        <span class="tag-tool">Power BI</span>
+                        <span class="tag-tool">Azure Data Studio</span>
+                        <span class="tag-tool">Advanced Excel</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>Frameworks & Architecture</h3>
+                
+                <div class="tool-category">
+                    <h4>Operational Guardrails</h4>
+                    <div class="tags-container">
+                        <span class="tag-tool">COPC Performance Standards</span>
+                        <span class="tag-tool">Kirkpatrick Evaluation Modeling</span>
+                        <span class="tag-tool">ADDIE Architecture</span>
+                    </div>
+                </div>
+
+                <div class="tool-category">
+                    <h4>Cloud Infrastructure Foundations</h4>
+                    <div class="tags-container">
+                        <span class="tag-tool">AWS Cloud Architectures</span>
+                        <span class="tag-tool">Data Governance Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- High-Intent Enterprise Capture Footer -->
+    <footer>
+        <h2>Initiate a Strategic Partnership</h2>
+        <p>I am looking to integrate with progressive, large-scale enterprise structures demanding high-impact, programmatic execution metrics.</p>
+        <div class="footer-links">
+            <a href="mailto:zeina.sherif@example.com">Secure Communication Link</a>
+            <a href="https://linkedin.com">Verified Professional Profile</a>
+        </div>
+        <p style="margin-top: 2.5rem; font-size: 0.75rem; color: #7A9BB3;">&copy; 2026 Zeina Sherif. Engineered for Operational Impact.</p>
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        const ring = document.getElementById('cursor-ring');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            ring.style.left = (e.clientX - 11) + 'px';
+            ring.style.top = (e.clientY - 11) + 'px';
+        });
+
+        document.querySelectorAll('a, .case-header').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                ring.style.transform = 'scale(1.5)';
+                ring.style.borderColor = '#4C7F9C';
+            });
+            item.addEventListener('mouseleave', () => {
+                ring.style.transform = 'scale(1)';
+                ring.style.borderColor = '#C2DCEC';
+            });
+        });
+    </script>
+</body>
+</html>
